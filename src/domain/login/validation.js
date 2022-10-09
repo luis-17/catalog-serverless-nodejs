@@ -21,5 +21,5 @@ module.exports = {
         HttpConstant.BAD_REQUEST_STATUS.code
       ).throw(!AppCore.isEmpty(reason));
     });
-  },
+  }
 };

@@ -18,4 +18,3 @@ module.exports.REGEX_VALIDATION = {
   STRING_FECHA_YMD: '^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$',
   STRING_BASE_1: '^(?!\\s*$).+'
 };
-

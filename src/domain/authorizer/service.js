@@ -9,7 +9,7 @@ module.exports = {
     console.log(`event :${JSON.stringify(event)}`);
     try {
       const headerToken = CommonUtils.getHeaderToken(event);
-      const secret = Buffer.from(process.env.JWT_SECRET, "base64");
+      const secret = Buffer.from(process.env.JWT_SECRET, 'base64');
       const decoded = jwt.verify(headerToken, secret);
       console.log('decoded token: ', decoded);
       if (decoded && decoded.id) {

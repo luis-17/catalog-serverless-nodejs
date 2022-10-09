@@ -5,5 +5,5 @@ module.exports = {
   FROM usuario
   WHERE username = :username
   AND estado = 1
-  `,
+  `
 };

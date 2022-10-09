@@ -12,5 +12,5 @@ module.exports = {
     });
     console.log(`getUsuarioPorUsername result: ${JSON.stringify(result)}`);
     return result.data[0];
-  },
+  }
 };

@@ -8,5 +8,5 @@ module.exports = {
     await Validation.loginUsuario(payload);
     const result = await Service.loginUsuario(payload);
     return result;
-  },
+  }
 };

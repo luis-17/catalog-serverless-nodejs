@@ -15,7 +15,6 @@ class CommonUtils {
     const calculatedDate = `${value.substr(6, 2)}/${value.substr(4, 2)}/${value.substr(0, 4)} 23:60:59`;
     return calculatedDate;
   }
-
 }
 
 module.exports = CommonUtils;

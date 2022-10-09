@@ -9,7 +9,7 @@ const CustomException = require('./utils/custom.exception');
 module.exports = {
   async consultarDetalleProducto(event) {
     console.log('service: consultarDetalleProducto');
-    let errorMessage = null;
+    const errorMessage = null;
     try {
       const result = await DataAccess.getProductoDetalle(event);
       console.log(`identifier product selected: ${JSON.stringify(result)}`);
@@ -32,7 +32,9 @@ module.exports = {
     console.log('service: crearProducto');
     let errorMessage = null;
     try {
-      const { sku, nombre, precio, marca } = event;
+      const {
+        sku, nombre, precio, marca
+      } = event;
 
       const existSKU = await DataAccess.getSKUProductos({ sku });
 
@@ -69,9 +71,11 @@ module.exports = {
   },
   async actualizarProducto(event) {
     console.log('service: actualizarProducto');
-    let errorMessage = null;
+    const errorMessage = null;
     try {
-      const { sku, nombre, precio, marca, id, session } = event;
+      const {
+        sku, nombre, precio, marca, id, session
+      } = event;
       const payloadRecord = {
         sku,
         nombre,
@@ -83,7 +87,7 @@ module.exports = {
       console.log(`identifier product updated: ${JSON.stringify(result)}`);
       const correosAdmin = await DataAccess.getCorreosAdmin({ id: session.id });
       const arrCorreos = [];
-      correosAdmin.forEach(element => {
+      correosAdmin.forEach((element) => {
         arrCorreos.push(element.email);
       });
       await ServiceSupport.enviarCorreoActualizacionProductos(arrCorreos, { nombre });
@@ -101,7 +105,7 @@ module.exports = {
   },
   async eliminarProducto(event) {
     console.log('service: eliminarProducto');
-    let errorMessage = null;
+    const errorMessage = null;
     try {
       const { id } = event;
       const payloadRecord = { id };

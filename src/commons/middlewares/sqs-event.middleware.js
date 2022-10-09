@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
 const AWSXRay = require('aws-xray-sdk');
-const moment = require('moment-timezone');
 
 let isSqsEvent;
 

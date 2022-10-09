@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
-const moment = require('moment-timezone');
-const { RESPONSE_MENSAJES } = require('../utils/domain.constant');
+const { RESPONSE_MENSAJES } = require('./domain.constant');
 
 module.exports = {
 
@@ -9,7 +8,7 @@ module.exports = {
       data,
       indValidacion: 1,
       msj: RESPONSE_MENSAJES.INSERT_DATA
-    }
+    };
     return response;
   },
   mapperUpdateResponse(data) {
@@ -17,7 +16,7 @@ module.exports = {
       data,
       indValidacion: 1,
       msj: RESPONSE_MENSAJES.UPDATE_DATA
-    }
+    };
     return response;
   },
   mapperDeleteResponse(data) {
@@ -25,7 +24,7 @@ module.exports = {
       data,
       indValidacion: 1,
       msj: RESPONSE_MENSAJES.DELETE_DATA
-    }
+    };
     return response;
   },
   mapperDataResponse(data) {
@@ -33,7 +32,7 @@ module.exports = {
       data,
       indValidacion: 1,
       msj: data.length === 0 ? RESPONSE_MENSAJES.EMPTY_DATA_LIST : RESPONSE_MENSAJES.FULL_DATA_LIST
-    }
+    };
     return response;
   }
 };

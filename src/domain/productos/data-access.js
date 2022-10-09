@@ -72,5 +72,5 @@ module.exports = {
     });
     console.log(`eliminarProducto result: ${JSON.stringify(result)}`);
     return result;
-  },
+  }
 };

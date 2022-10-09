@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 /* eslint-disable no-param-reassign */
 const DataAccess = require('./data-access');
@@ -13,7 +13,9 @@ module.exports = {
     console.log('service: crearUsuario');
     let errorMessage = null;
     try {
-      const { tipoUsuario, email, username, password } = event;
+      const {
+        tipoUsuario, email, username, password
+      } = event;
 
       const existUsername = await DataAccess.getUsernames({ username });
 
@@ -51,9 +53,11 @@ module.exports = {
   },
   async actualizarUsuario(event) {
     console.log('service: actualizarUsuario');
-    let errorMessage = null;
+    const errorMessage = null;
     try {
-      const { tipoUsuario, email, username, password, id } = event;
+      const {
+        tipoUsuario, email, username, password, id
+      } = event;
       const passwordHash = await bcrypt.hash(password, 8);
       const payloadRecord = {
         tipoUsuario,
@@ -79,7 +83,7 @@ module.exports = {
   },
   async eliminarUsuario(event) {
     console.log('service: eliminarUsuario');
-    let errorMessage = null;
+    const errorMessage = null;
     try {
       const { id } = event;
       const payloadRecord = { id };

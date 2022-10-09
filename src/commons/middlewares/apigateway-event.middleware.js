@@ -1,7 +1,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
+/* eslint-disable no-throw-literal */
 const AWSXRay = require('aws-xray-sdk');
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 let isApiGatewayRestEvent;
 const bindingHeaders = [];
@@ -82,7 +83,7 @@ module.exports = (options) => {
             payload.session = decoded.payload;
             const actionsAnonimo = ['consultarDetalleProducto'];
             if (payload.session.rol === 'ANONIMO' && !actionsAnonimo.includes(action)) {
-              throw ({ message:'El perfil de la sesion no tiene acceso a este componente.' });
+              throw ({ message: 'El perfil de la sesion no tiene acceso a este componente.' });
             }
           }
 

@@ -5,6 +5,6 @@ module.exports = {
       identifier: 4
     },
     indValidacion: 1,
-    msj: "Se procesó correctamente el registro"
+    msj: 'Se procesó correctamente el registro'
   }
 };

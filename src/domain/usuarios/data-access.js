@@ -42,5 +42,5 @@ module.exports = {
     });
     console.log(`eliminarUsuario result: ${JSON.stringify(result)}`);
     return result;
-  },
+  }
 };

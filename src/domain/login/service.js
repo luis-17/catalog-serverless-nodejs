@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const DataAccess = require('./data-access');
 // const ServiceSupport = require('./utils/service.support');
@@ -30,7 +30,7 @@ module.exports = {
           ERROR_FUNCIONAL.code, ERROR_FUNCIONAL.message, [errorMessage], {}, ERROR_FUNCIONAL.httpCode
         );
       }
-      const secret = Buffer.from(process.env.JWT_SECRET, "base64");
+      const secret = Buffer.from(process.env.JWT_SECRET, 'base64');
       const tokenJWT = await jwt.sign({ email: result.email, id: result.id, rol: result.tipoUsuario }, secret, {
         expiresIn: 86400 // expira en 24 horas
       });
