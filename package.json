@@ -1,0 +1,56 @@
+{
+  "name": "luuna-tech-catalogo",
+  "version": "1.0.0",
+  "description": "Catálogo para Luuna Tech",
+  "main": "src/domain/[...]/app.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "lint": "eslint --fix . --ext .js,.ts,.tsx -f codeframe",
+    "start": "serverless offline start --stage dev --functionsFile local",
+    "deploy": "serverless deploy --stage",
+    "deploy:productos": "serverless deploy function -f productos --stage",
+    "deploy:usuarios": "serverless deploy function -f usuarios --stage",
+    "deploy:login": "serverless deploy function -f login --stage",
+    "test": "jest --coverage --maxWorkers=2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Colocar URL de repositorio"
+  },
+  "private": true,
+  "keywords": [
+    "luuna",
+    "tech",
+    "catalogo"
+  ],
+  "author": "Luis Ricardo Luna Soto",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "7.21.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "jest": "27.2.3",
+    "serverless": "3.22.0",
+    "serverless-offline": "^11.0.1",
+    "serverless-plugin-reducer": "^4.0.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "17.1.1",
+    "@hapi/joi-date": "2.0.0",
+    "@middy/core": "1.0.0",
+    "aws-crt": "1.10.2",
+    "aws-sdk": "^2.995.0",
+    "aws-xray-sdk": "^3.3.3",
+    "aws4-axios": "^2.4.3",
+    "axios": "^0.21.4",
+    "bcryptjs": "^2.4.3",
+    "buffer": "^6.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.34",
+    "mysql": "2.17.1"
+  }
+}

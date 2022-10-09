@@ -1,0 +1,101 @@
+verify-token:
+  handler: src/domain/authorizer/app.handler
+  name: authorizer
+  description: Lambda autorizador a nivel de API Gateway
+login:
+  handler: src/domain/login/app.handler
+  name: luuna-login-${self:custom.currentStage}
+  description: Lambda de login de usuarios
+  events:
+    - http:
+        path: /login
+        method: post
+        integration: lambda
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/acceso/login.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+productos:
+  handler: src/domain/productos/app.handler
+  name: luuna-product-management-${self:custom.currentStage}
+  description: Lambda de gestión de productos
+  events:
+    - http:
+        path: /productos/crear
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/producto/crearProducto.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+    - http:
+        path: /productos/actualizar
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/producto/actualizarProducto.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+    - http:
+        path: /productos/eliminar
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/producto/eliminarProducto.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+    - http:
+        path: /productos/consultar/detalle
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/producto/consultarDetalleProducto.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+  # vpc: ${self:custom.vpc.${self:custom.currentStage}}
+usuarios:
+  handler: src/domain/usuarios/app.handler
+  name: luuna-user-management-${self:custom.currentStage}
+  description: Lambda de gestión de usuarios
+  events:
+    - http:
+        path: /usuarios/crear
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/usuario/crearUsuario.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+    - http:
+        path: /usuarios/actualizar
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/usuario/actualizarUsuario.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+    - http:
+        path: /usuarios/eliminar
+        method: post
+        integration: lambda
+        authorizer: ${self:custom.authorizer}
+        cors: ${file(config/serverless/http-cors.yaml)}
+        request:
+          template:
+            application/json: ${file(config/serverless/request/usuario/eliminarUsuario.vm)}
+        response: ${file(config/serverless/http-response.yaml)}
+  # vpc: ${self:custom.vpc.${self:custom.currentStage}}
+
