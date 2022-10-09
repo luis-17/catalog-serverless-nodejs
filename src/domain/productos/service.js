@@ -81,10 +81,10 @@ module.exports = {
       };
       const result = await DataAccess.actualizarProducto(payloadRecord);
       console.log(`identifier product updated: ${JSON.stringify(result)}`);
-      const correosAdmin = await DataAccess.obtenerCorreosAdmin({ id: session.id });
+      const correosAdmin = await DataAccess.getCorreosAdmin({ id: session.id });
       const arrCorreos = [];
       correosAdmin.forEach(element => {
-        arrCorreos.push(element);
+        arrCorreos.push(element.email);
       });
       await ServiceSupport.enviarCorreoActualizacionProductos(arrCorreos, { nombre });
       return MapperSupport.mapperUpdateResponse(result);

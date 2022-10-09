@@ -75,15 +75,17 @@ module.exports = (options) => {
           } else {
             headerToken = event.authorizationToken;
           }
-          headerToken = headerToken.replace('Bearer ', '');
-          const decoded = await jwt.decode(headerToken, { complete: true });
-          console.log('API Gateway decoded: ', decoded);
-          payload.session = decoded.payload;
-          const actionsAnonimo = ['consultarDetalleProducto'];
-          if (payload.session.rol === 'ANONIMO' && !actionsAnonimo.includes(action)) {
-            // throw new Error('El perfil de la sesion no tiene acceso a este endpoint.');
-            throw ({ message:'El perfil de la sesion no tiene acceso a este endpoint.' });
+          if (headerToken) {
+            headerToken = headerToken.replace('Bearer ', '');
+            const decoded = await jwt.decode(headerToken, { complete: true });
+            console.log('API Gateway decoded: ', decoded);
+            payload.session = decoded.payload;
+            const actionsAnonimo = ['consultarDetalleProducto'];
+            if (payload.session.rol === 'ANONIMO' && !actionsAnonimo.includes(action)) {
+              throw ({ message:'El perfil de la sesion no tiene acceso a este componente.' });
+            }
           }
+
           handler.event = { origin, action, payload };
 
           console.log('ApiGatewayEvent - Origin');
