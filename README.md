@@ -23,7 +23,8 @@ Prueba Técnica Luuna Tech
 - Para correr la herramienta de verificación de código:
 > npm run lint
 
-## Tecnologias aplicadas
+## Tecnologias y teorias aplicadas
+- Paradigma arquitectónico: Domain Driven Design - DDD
 - Arquitectura sin servidor: __AWS Lambda__
 - Framework de arquitectura sin servidor: __Serverless Framework 3.22.0__
 - Exposición de los servicios: __AWS API Gateway__
@@ -31,3 +32,22 @@ Prueba Técnica Luuna Tech
 - Notificaciones por correo electrónico: __AWS SES__
 - Herramienta de verificación de código: __EsLint 7.21.0__
 - Herramienta de generación de tokens de acceso: __JWT 8.5.1__
+
+## Base y paths del proyecto
+
+#### Link base
+https://5sk7w5ptx9.execute-api.us-east-1.amazonaws.com/dev
+
+#### Paths:
+Login: /login
+
+Productos:
+  productos/crear
+  productos/actualizar
+  productos/eliminar
+  productos/consultar/detalle
+
+Usuarios:
+  usuarios/crear
+  usuarios/actualizar
+  usuarios/eliminar
